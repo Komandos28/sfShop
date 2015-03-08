@@ -16,6 +16,12 @@
             <li role="presentation"><a href="{{ path('basket') }}">Koszyk</a></li>
         </ul>
         
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="flash-notice">
+                <p class="bg-info">{{ flashMessage }}</p>
+            </div>
+        {% endfor %}
+        
         {% block body %}{% endblock %}
         {% block javascripts %}
         <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>

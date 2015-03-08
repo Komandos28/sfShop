@@ -3,5 +3,25 @@
 {% block title %}AppBundle:Basket:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Basket:index page</h1>
+<h1>Koszyk</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>nazwa</th>
+            <th>cena</th>
+            <th>opis</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products_in_basket %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.desc }}</td>
+            </tr>
+         {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
