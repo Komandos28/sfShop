@@ -9,6 +9,7 @@
         <tr>
             <th>Id</th>
             <th>nazwa</th>
+            <th>kategoria</th>
             <th>cena</th>
             <th>opis</th>
             <th></th>
@@ -19,8 +20,9 @@
             <tr>
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
+                <td>{{ product.category.name }}</td>
                 <td>{{ product.price }}</td>
-                <td>{{ product.desc }}</td>
+                <td>{{ product.desccription }}</td>
                 <td>
                     <a href="{{ path('basket_remove', { 'id': product.id}) }}" class="btn btn-danger">usuń</a>
                 </td>
