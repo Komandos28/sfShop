@@ -2,19 +2,19 @@
 parameters:
     database_driver:   pdo_mysql
     database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     symfony
+    database_port:     null
+    database_name:     sf_shop
     database_user:     root
-    database_password: ~
+    database_password: null
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
-    mailer_user:       ~
-    mailer_password:   ~
+    mailer_user:       null
+    mailer_password:   null
 
-    locale:            en
+    locale:            pl
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
