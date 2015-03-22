@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
+use AppBundle\Entity\Category;
+
 /**
  * ProductRepository
  *
@@ -12,4 +14,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductRepository extends EntityRepository
 {
+    public function getProductsQuery(Category $category = null)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+
+        $qb->select('p')
+            ->from('AppBundle:Product', 'p');
+
+        if ($category) {
+            $qb
+                ->where('p.category = :category')
+                ->setParameter('category', $category);
+        }
+
+        $qb->orderBy('p.name', 'DESC');
+
+        return $qb->getQuery();
+    }
 }
