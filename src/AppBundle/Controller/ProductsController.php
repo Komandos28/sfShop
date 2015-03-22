@@ -7,11 +7,30 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Entity\Category;
+use AppBundle\Form\ProductType;
 
 class ProductsController extends Controller
 {
+    
+    
+    
     /**
-     * @Route("/produkty/{id}", name="products_list", defaults={"id" = false})
+     * @Route("/produkty/dodaj", name="products_add")
+     */
+    
+    public function addAction(Request $request)
+    {
+        $form = $this->createForm(new ProductType());
+        $form->handleRequest($request);
+        
+        return $this->render('products/add.html.twig',[
+            'form' => $form->createView(),
+        ]);
+    }
+    
+    
+    /**
+     * @Route("/produkty/{id}", name="products_list", defaults={"id" = false}, requirements={"id": "\d+"})
      */
     public function indexAction(Request $request, Category $category = null)
     {
@@ -30,5 +49,6 @@ class ProductsController extends Controller
             'products' => $products,
         ]);
     }
+    
 
 }
